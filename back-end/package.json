@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only ./src/server.ts"
+    "dev": "ts-node-dev --transpile-only ./src/server.ts",
+    "migrate": "prisma migrate dev",
+    "migrate:reset": "prisma migrate reset"
   },
   "keywords": [],
   "author": "",
