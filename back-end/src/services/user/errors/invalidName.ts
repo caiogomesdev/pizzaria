@@ -1,6 +1,6 @@
 export class InvalidName extends Error {
   constructor() {
-    super("Nome inválido");
+    super("Digite um nome válido");
     this.name = "InvalidName";
   }
 }

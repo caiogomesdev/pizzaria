@@ -1,6 +1,6 @@
 export class InvalidPassword extends Error {
   constructor() {
-    super("Senha inválida");
+    super("Digite uma senha válida");
     this.name = "InvalidPassword";
   }
 }
