@@ -1,5 +1,5 @@
 export const isEmptyOrNull = (field: string, error: Error) => {
-  if (!field) {
+  if (!field?.trim()) {
     throw error;
   }
 };

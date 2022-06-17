@@ -1,4 +1,6 @@
-
+import { prismaClient } from '../../prisma'
+import { isEmptyOrNull } from '../../validators'
+import { InvalidEmail, InvalidName, InvalidPassword } from './errors';
 
 class CreateUserService {
   execute({
@@ -6,6 +8,10 @@ class CreateUserService {
     email,
     password,
   }: ExecuteParams): ExecuteResponse {
+    isEmptyOrNull(name, new InvalidName());
+    isEmptyOrNull(email, new InvalidEmail());
+    isEmptyOrNull(password, new InvalidPassword());
+
     return { name, email, password };
   }
 }
