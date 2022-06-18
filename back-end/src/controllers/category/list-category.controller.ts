@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { ListCategoryService } from '../../services/category';
 
 export class ListCategoryController {
-  async handle(_req: Request, res: Response) {
+  async handle(_req: Request, res: Response): Promise<Response> {
     const listCategoryService = new ListCategoryService();
     const categories = await listCategoryService.execute();
     return res.json(categories);
