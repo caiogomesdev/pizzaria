@@ -1,6 +1,6 @@
-import { prismaClient } from '../../prisma'
-import { hash } from 'bcryptjs'
-import { isEmptyOrNull } from '../../validators'
+import { hash } from 'bcryptjs';
+import { prismaClient } from '../../prisma';
+import { isEmptyOrNull } from '../../validators';
 import { AlreadyExistsUser, InvalidEmail, InvalidName, InvalidPassword } from './errors';
 
 class CreateUserService {
