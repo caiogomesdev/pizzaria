@@ -1,8 +1,23 @@
 import { prismaClient } from '../../prisma';
 
 export class CreateProductService implements CreateProduct {
-  execute({ name, price, description, banner, category_id }: CreateProduct.Params): Promise<CreateProduct.Result> {
-    return Promise.resolve({ ok: true})
+  execute({
+    name,
+    price,
+    description,
+    banner,
+    category_id,
+  }: CreateProduct.Params): Promise<CreateProduct.Result> {
+    return prismaClient.product.create({
+      data: { name, price, description, banner, category_id },
+      select: {
+        name: true,
+        price: true,
+        description: true,
+        banner: true,
+        category_id: true,
+      },
+    });
   }
 }
 
@@ -19,7 +34,5 @@ namespace CreateProduct {
     category_id: string;
   }
 
-  export type Result = {
-    ok: boolean;
-  }
+  export type Result = Params;
 }

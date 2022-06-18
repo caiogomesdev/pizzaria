@@ -1,4 +1,5 @@
 import express, { Request, Response, NextFunction } from 'express';
+import { resolve } from 'path';
 import 'express-async-errors';
 import 'dotenv/config';
 import cors from 'cors';
@@ -9,9 +10,9 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-
 app.use(router);
 
+app.use('/images', express.static(resolve(__dirname, '..', 'uploads')));
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   if (err instanceof Error) {
     return res.status(400).json({
