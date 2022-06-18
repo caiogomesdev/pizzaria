@@ -1,7 +1,7 @@
 import { hash } from 'bcryptjs';
 import { prismaClient } from '../../prisma';
 import { isEmptyOrNull } from '../../validators';
-import { AlreadyExistsUser, InvalidEmail, InvalidName, InvalidPassword } from './errors';
+import { AlreadyExistsUser, InvalidEmail, InvalidName, InvalidPassword } from '../../validators/errors';
 
 class CreateUserService {
   async execute({ name, email, password }: ExecuteParams): Promise<ExecuteResponse> {

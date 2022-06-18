@@ -1,6 +1,6 @@
 import { compare } from 'bcryptjs';
 import { prismaClient } from '../../prisma';
-import { UserNotFound } from './errors';
+import { UserNotFound } from '../../validators/errors';
 import { sign } from 'jsonwebtoken';
 
 export class AuthenticationUserService implements AuthenticationUser {
