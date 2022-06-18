@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { DetailUserService } from '../../services/user'
 
 class DetailUserController {
-  async handle(req: Request, res: Response): Promise<Response> {
+  async handle(req: Request, res: Response) {
     const detailUserSerivce = new DetailUserService();
 
     const { user_id } = req;
