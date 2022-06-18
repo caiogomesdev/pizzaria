@@ -1,6 +1,7 @@
 import { compare } from 'bcryptjs';
-import { prismaClient } from "../../prisma";
+import { prismaClient } from '../../prisma';
 import { UserNotFound } from './errors';
+import { sign } from 'jsonwebtoken';
 
 export class AuthenticationUserService implements AuthenticationUser {
   async execute(
@@ -23,11 +24,24 @@ export class AuthenticationUserService implements AuthenticationUser {
       throw new UserNotFound();
     }
 
-      return {
-        acessToken: "qualquer",
-        name: "qualquer",
-        email: "qualquer2q2",
-      };
+    const acessToken = sign(
+      {
+        name: user.name,
+        email: user.email,
+      },
+      process.env.SECRET_JWT || "123",
+      {
+        subject: user.id,
+        expiresIn: "30d",
+      }
+    );
+
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      acessToken,
+    };
   }
 }
 
@@ -42,8 +56,9 @@ export namespace AuthenticationUser {
   }
 
   export type Result = {
-    acessToken: string;
+    id: string;
     name: string;
     email: string;
+    acessToken: string;
   }
 }
