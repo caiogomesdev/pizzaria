@@ -15,6 +15,10 @@ import {
   createProductController,
   listByCategoryController,
 } from './controllers/product';
+import {
+  createOrderController,
+  closeOrderController,
+} from './controllers/order';
 
 const router = Router();
 const upload = multer(uploadConfig.upload('uploads'));
@@ -37,5 +41,8 @@ router.get(
   isAuthenticated,
   listByCategoryController.handle
 );
+
+router.post('/order', isAuthenticated, createOrderController.handle);
+router.delete('/order/:orderId', isAuthenticated, closeOrderController.handle);
 
 export { router };
