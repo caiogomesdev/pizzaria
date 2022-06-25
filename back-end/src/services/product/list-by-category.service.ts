@@ -7,6 +7,14 @@ export class ListByCategoryService implements ListByCategory {
   }: ListByCategory.Params): PrismaPromise<ListByCategory.Result> {
     return prismaClient.product.findMany({
       where: { category_id: categoryId },
+      select: {
+        id: true,
+        name: true,
+        price: true,
+        description: true,
+        banner: true,
+        category_id: true,
+      },
     });
   }
 }
@@ -19,5 +27,12 @@ namespace ListByCategory {
   export type Params = {
     categoryId: string;
   };
-  export type Result = Product[];
+  export type Result = {
+    id: string;
+    name: string;
+    price: string;
+    description: string;
+    banner: string;
+    category_id: string;
+  }[];
 }
