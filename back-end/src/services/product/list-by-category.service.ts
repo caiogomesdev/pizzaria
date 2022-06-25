@@ -2,11 +2,11 @@ import { PrismaPromise, Product } from '@prisma/client';
 import { prismaClient } from '../../prisma';
 
 export class ListByCategoryService implements ListByCategory {
-execute({
+  execute({
     categoryId,
   }: ListByCategory.Params): PrismaPromise<ListByCategory.Result> {
     return prismaClient.product.findMany({
-      where: { category_id: categoryId }
+      where: { category_id: categoryId },
     });
   }
 }
@@ -18,6 +18,6 @@ interface ListByCategory {
 namespace ListByCategory {
   export type Params = {
     categoryId: string;
-  }
+  };
   export type Result = Product[];
 }

@@ -1,5 +1,6 @@
-import { Request, Response} from 'express';
-import { ListByCategoryService } from '../../services/product'
+import { Request, Response } from 'express';
+import { ListByCategoryService } from '../../services/product';
+
 class ListByCategoryController {
   async handle(req: Request, res: Response): Promise<Response> {
     const categoryId = req.query.categoryId as string;
