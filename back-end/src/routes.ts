@@ -18,6 +18,7 @@ import {
 import {
   createOrderController,
   closeOrderController,
+  addItemController,
 } from './controllers/order';
 
 const router = Router();
@@ -43,6 +44,7 @@ router.get(
 );
 
 router.post('/order', isAuthenticated, createOrderController.handle);
+router.post('/order/item', isAuthenticated, addItemController.handle);
 router.delete('/order/:orderId', isAuthenticated, closeOrderController.handle);
 
 export { router };
