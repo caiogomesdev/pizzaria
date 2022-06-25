@@ -1,3 +1,4 @@
+import { Item } from '@prisma/client';
 import { prismaClient } from '../../prisma';
 
 export class AddItemService implements AddItem {
