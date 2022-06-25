@@ -9,6 +9,8 @@ services:
       POSTGRES_USER: root
       POSTGRES_PASSWORD: root
       POSTGRES_DB: pizzaria
+    volumes:
+      - ./.docker/data:/var/lib/postgresql/data
     ports:
       - 5432:5432
 
