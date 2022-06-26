@@ -5,3 +5,4 @@ export * from './remove-item.service';
 export * from './send-order.service';
 export * from './list-order.service';
 export * from './detail-order.service';
+export * from './finish-order.service';
