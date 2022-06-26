@@ -4,3 +4,4 @@ export * from './add-item.controller';
 export * from './remove-item.controller';
 export * from './send-order-controller';
 export * from './list-order.controller';
+export * from './detail-order.controller';
